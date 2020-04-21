@@ -23,8 +23,10 @@
 
 <P><b>도큐먼트 목록</b></P>
 <form action="./subjectEvtExec" method="post">
+<!--Subject 옵저버 연계처리를 위한 Form 값-->
 <input type="hidden" name="docKey"> 
 <input type="hidden" name="evntTyp">
+<!-- Subject 엔티티 목록(ComboBox)-->
 <c:forEach items="${docList}" var="doc">
 <li>
 	${doc.title}(${doc.taskId}) 
@@ -45,6 +47,7 @@
 <form action="./documentAdd" method="post">    
     제목:<input type="text" name="title"/>
     연계업무:
+	<!--옵저버 목록(ComboBox)-->
     <select name="taskId">
         <c:forEach items="${taskList}" var="registry">
             <option value="${registry.TASKID}">${registry.TASKID}</option>
@@ -55,7 +58,7 @@
 
 <hr/>
     
-<P><b>등록된 서비스 레지스트리 현황</b> </P>
+<P><b>서비스 레지스트리 옵저버등록 현황</b> </P>
 <c:forEach items="${taskList}" var="registry">
 <li>
 	${registry.TASKID} ===> ${registry.CLASS_NAME}

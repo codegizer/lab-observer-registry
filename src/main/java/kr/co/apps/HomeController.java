@@ -31,34 +31,49 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	//옵저버관리서비스
 	@Autowired
 	ServiceRegistry serviceRegistry;
     
+	
+	//Subject
     @Autowired
     MyDocument myDoc;
 
 
 	/**
-	 * Simply selects the home view to render by returning its name.
+	 * 예제 구현을 위한 홈 화면
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
+		
+		//Subject 목록
         model.addAttribute("docList", myDoc.selectDocList());		
+		
+		//observerList
 		model.addAttribute("taskList", serviceRegistry.selectRegistryList());		
 		return "home";
 	}
 	
+	/**
+	 * Subject에 대해 옵저버에 연계처리 요청
+	 */
 	@RequestMapping(value = "/subjectEvtExec", method = RequestMethod.POST)
 	public String callEvent(Integer docKey, String evntTyp) 
     {
+		//notify
 		myDoc.callEvtExecute(docKey,CbEventType.valueOf(evntTyp));
 
         return "redirect:./";
 	}
 	
+	/**
+	 * Subject 엔티티 추가
+	 */	
 	@RequestMapping(value = "/documentAdd", method = RequestMethod.POST)
 	public String subjectAdd(String title, String taskId, Model model) 
     {	
+		//Subject 엔티티 추가
         myDoc.add(title,taskId);
 		        
 		return "redirect:./";

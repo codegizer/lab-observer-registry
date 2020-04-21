@@ -11,13 +11,17 @@ import java.util.*;
 
 @Service
 public class MyDocument {
+	
+	//옵저버관리서비스
     @Autowired
 	ServiceRegistry serviceRegistry;
     
     int key = 0;
     
+	//Subject 엔티티 관리를 위한 해시맵
     Map<Integer,MyDocumentVo> dataHashMap = new HashMap<Integer,MyDocumentVo>();
     
+	//Subject 엔티티 목록 리턴
     public List<MyDocumentVo> selectDocList()
     {
 		List<MyDocumentVo> list = new ArrayList<MyDocumentVo>();
@@ -32,6 +36,7 @@ public class MyDocument {
 		return list;
     }
     
+	//Subject 엔티티 추가
     public synchronized void add(String title, String taskId)
     {
         MyDocumentVo vo = new MyDocumentVo();
@@ -45,6 +50,8 @@ public class MyDocument {
         dataHashMap.put(key,vo);
     }
     
+	//notify
+	//Subject와 관련된 연계서비스를 호출
     public void callEvtExecute(int docKey, CbEventType eventType)
     {
         MyDocumentVo docVo = dataHashMap.get(docKey);

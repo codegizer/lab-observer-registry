@@ -14,6 +14,7 @@ public class ServiceRegistry implements IServiceRegistry {
 	
 	private Map<String,Observer> registyMap = new HashMap<String,Observer>();  
 	
+	//파라미터로 받은 옵저버 인스턴스와 업무ID를 함께 레지스트리(해시맵)에 등록
 	@Override
 	public void register(String taskId, Observer observer) {
 		// TODO Auto-generated method stub
@@ -23,6 +24,7 @@ public class ServiceRegistry implements IServiceRegistry {
 		System.out.println("이벤트처리 옵저버 :" + observer.getClass().getName() );
 	}
 
+	//파라미터로 받은 taskId를 이용해 레지스트리에서 관련 옵저버를 찾아 이벤트와 처리할 Subject 엔티티를 전달
 	@Override
 	public void notify(MyDocumentVo docVo, String taskId, CbEventType eventType) {
 		// TODO Auto-generated method stub
@@ -32,6 +34,7 @@ public class ServiceRegistry implements IServiceRegistry {
 		
 	}
 
+	//옵저버레지스트리에 등록된 옵저버 목록을 조회
 	@Override
 	public List<Map<String,String>> selectRegistryList() {
 		
