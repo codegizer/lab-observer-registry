@@ -45,10 +45,11 @@ public class HomeController {
 	 * 예제 구현을 위한 홈 화면
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) throws Exception {
+	public String home(Locale locale, Model model) throws Exception 
+	{
 		
 		//Subject 목록
-        model.addAttribute("docList", myDoc.selectDocList());		
+		model.addAttribute("docList", myDoc.selectDocList());		
 		
 		//observerList
 		model.addAttribute("taskList", serviceRegistry.selectRegistryList());		
