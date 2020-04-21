@@ -48,7 +48,7 @@ public class MyDocument {
 		vo.setTaskId(taskId);
         
 		dataHashMap.put(key,vo);
-    }
+	}
     
 	//notify
 	//Subject와 관련된 연계서비스를 호출
