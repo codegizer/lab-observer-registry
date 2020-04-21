@@ -59,4 +59,4 @@ public class MyDocument {
 		serviceRegistry.notify(docVo,taskId,eventType);
         
     }
-}
+} 
