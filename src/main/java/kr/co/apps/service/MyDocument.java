@@ -52,11 +52,11 @@ public class MyDocument {
     
 	//notify
 	//Subject와 관련된 연계서비스를 호출
-    public void callEvtExecute(int docKey, CbEventType eventType)
-    {
+	public void callEvtExecute(int docKey, CbEventType eventType)
+	{
 		MyDocumentVo docVo = dataHashMap.get(docKey);
 		String taskId = docVo.getTaskId();
 		serviceRegistry.notify(docVo,taskId,eventType);
         
-    }
+	}
 } 
