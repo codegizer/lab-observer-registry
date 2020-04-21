@@ -37,8 +37,8 @@ public class HomeController {
     
 	
 	//Subject
-    @Autowired
-    MyDocument myDoc;
+	@Autowired
+	MyDocument myDoc;
 
 
 	/**
@@ -60,11 +60,11 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/subjectEvtExec", method = RequestMethod.POST)
 	public String callEvent(Integer docKey, String evntTyp) 
-    {
+	{
 		//notify
 		myDoc.callEvtExecute(docKey,CbEventType.valueOf(evntTyp));
 
-        return "redirect:./";
+		return "redirect:./";
 	}
 	
 	/**
@@ -72,9 +72,9 @@ public class HomeController {
 	 */	
 	@RequestMapping(value = "/documentAdd", method = RequestMethod.POST)
 	public String subjectAdd(String title, String taskId, Model model) 
-    {	
+	{	
 		//Subject 엔티티 추가
-        myDoc.add(title,taskId);
+		myDoc.add(title,taskId);
 		        
 		return "redirect:./";
 	}
